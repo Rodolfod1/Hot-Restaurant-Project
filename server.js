@@ -28,18 +28,33 @@ var tables = [
 
 // ROUTES
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "viewTables.html"));
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/api/tables", function(){
-    res.sendFile(path.join(__dirname, ".html"));
+//app.get("/api/tables", function(){
+app.get("/tables", function (req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
 });
 
-app.get("/api/tables/:table", function(req, res){
+app.get("/reserve", function (req, res) {
+    res.sendFile(path.join(__dirname, "reserve.html"));
+});
+
+app.get("/api/tables/:table", function (req, res) {
     var choice = req.params.table;
 
-    for(var i = 0; i < 5; i++){
-        if(choice === tables[i].routeName){
+    for (var i = 0; i < tables.length; i++) {
+            if (choice === tables[i].customerName) {
+                return res.json(tables[i]);  
+        }
+        return res.json(false);
+    }
+});
+
+app.get("/api/reserve/:reserve", function (req, res) {
+    var choice = req.params.table;
+    for (var i = 5; i < tables.length; i++) {
+        if (choice === tables[i].customerName) {
             return res.json(tables[i]);
         }
         return res.json(false);
@@ -47,12 +62,12 @@ app.get("/api/tables/:table", function(req, res){
 });
 
 // create POST
-app.post("/api/tables", function(req, res)) {
+app.post("/api/tables", function (req, res) {
     var newReservation = req.body;
-    newReservation.routeName = newReservation.costumerName.replace(/\s+/g, "").toLowerCase();
+    newReservation.customerName = newReservation.customerName.replace(/\s+/g, "").toLowerCase();
     tables.push(newReservation);
-    res.json(newReservation);
-}
+    res.json(true);
+});
 
 // start the server
 
