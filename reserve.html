@@ -82,7 +82,37 @@
 
 
     <script>
-        //put value get js in here
+        
+    <script>
+        $(".submit").on("click", function(event) {
+            event.preventDefault();
+
+            var newReservation = {
+                customerName: $("#reserve-name").val().trim(),
+                phoneNumber: $("#reserve-phone").val().trim(),
+                customerEmail: $("#reserve-email").val().trim(),
+                customerID: $("#reserve-unique-id").val().trim(),
+            };
+
+            console.log(newReservation);
+
+            $.post("/api/tables", newReservation, 
+            function(data) {
+                if(data) {
+                    alert("You booked it, nice!");
+                } else {
+                    alert("Thanks for your interest, you're officially on the wait list");
+                }
+
+                $("#reserve-name").val("");
+                $("#reserve-phone").val("");
+                $("#reserve-email").val("");
+                $("#reserve-unique-id").val("");
+            });
+
+
+        });
+    </script>
     </script>
 
     <script src="https://kit.fontawesome.com/##.js" crossorigin="anonymous"></script>
