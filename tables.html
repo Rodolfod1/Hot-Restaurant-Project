@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Hot Restaurant</title>
+    <title>Tables Page</title>
 </head>
 <body>
     <div class="container">
@@ -16,22 +16,59 @@
             <h2 class="text-center">We only have 5 tables! Book your seat before they all are gone!</h2>
             <br>
             <div class="text-center">
-                <a href="/tables">
+                <a href="/reserve.html">
                 <button class="btn btn-lg btn-primary">
                     <span class="fa fa-list-alt">
                         
                     </span>
-                     View Tables
+                     Make Reservations
                 </button>
             </a>
-            <a href="/reserve">
+            <a href="/index.html">
                 <button class="btn btn-lg btn-danger">
                     <span class="fa fa-credit-card">
                        
                     </span>
-                    Make Reservation
+                    Home
                 </button>
             </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Current Reservations</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul id="tableList" class="list-group">
+                            <li class="list-group-item mt-4">
+                                <h2>Table #1</h2>
+                                <hr>
+                                <h2>ID: 55656</h2>
+                                <h2>Name: Rodo</h2>
+                                <h2>Email: rod@diaz</h2>
+                                <h2>Phone: 555-6978</h2>
+                            </li>
+                            <li class="list-group-item mt-4">
+                                <h2>Table #2</h2>
+                                <hr>
+                                <h2>ID: 55656</h2>
+                                <h2>Name: Rodo</h2>
+                                <h2>Email: rod@diaz</h2>
+                                <h2>Phone: 555-6978</h2>
+                            </li>
+                            <li class="list-group-item mt-4">
+                                <h2>Table #3</h2>
+                                <hr>
+                                <h2>ID: 55656</h2>
+                                <h2>Name: Rodo</h2>
+                                <h2>Email: rod@diaz</h2>
+                                <h2>Phone: 555-6978</h2>
+                            </li>
+                        </ul>
+                    </div>
             </div>
         </div>
         <footer class="footer">
