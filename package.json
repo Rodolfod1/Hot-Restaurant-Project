@@ -1,0 +1,25 @@
+{
+  "name": "hot-restaurant-project",
+  "version": "1.0.0",
+  "description": "JSON package for NodeJS app",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node": "^15.2.1",
+    "nodemon": "^2.0.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rodolfod1/Hot-Restaurant-Project.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rodolfod1/Hot-Restaurant-Project/issues"
+  },
+  "homepage": "https://github.com/Rodolfod1/Hot-Restaurant-Project#readme"
+}
