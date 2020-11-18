@@ -16,7 +16,7 @@
             <h2 class="text-center">We only have 5 tables! Book your seat before they all are gone!</h2>
             <br>
             <div class="text-center">
-                <a href="/reserve.html">
+                <a href="reserve.html">
                 <button class="btn btn-lg btn-primary">
                     <span class="fa fa-list-alt">
                         
@@ -24,7 +24,7 @@
                      Make Reservations
                 </button>
             </a>
-            <a href="/index.html">
+            <a href="index.html">
                 <button class="btn btn-lg btn-danger">
                     <span class="fa fa-credit-card">
                        
@@ -70,12 +70,24 @@
                         </ul>
                     </div>
             </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h4>Waiting List</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul id="waitList" class="list-group"></ul>
+                    </div>
+                </div>
         </div>
         <footer class="footer">
             <div class="container">
+                <p>Control Panel</p>
                 <p>
+                    <a href="#" id="clear">Clear Table</a>
+                    " | "
                     <a href="/api/tables">API Table Link</a>
-                     | 
+                    " | "
                     <a href="/api/waitList">API Wait List</a>
                 </p>
             </div>
