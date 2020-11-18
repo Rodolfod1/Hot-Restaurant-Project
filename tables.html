@@ -16,7 +16,7 @@
             <h2 class="text-center">We only have 5 tables! Book your seat before they all are gone!</h2>
             <br>
             <div class="text-center">
-                <a href="/reserve.html">
+                <a href="reserve.html">
                 <button class="btn btn-lg btn-primary">
                     <span class="fa fa-list-alt">
                         
@@ -24,7 +24,11 @@
                      Make Reservations
                 </button>
             </a>
+<<<<<<< HEAD
             <a href="/">
+=======
+            <a href="index.html">
+>>>>>>> ae039f5c3605339fb7ee148763e9e94315438316
                 <button class="btn btn-lg btn-danger">
                     <span class="fa fa-credit-card">
                        
@@ -54,34 +58,121 @@
                             <li class="list-group-item mt-4">
                                 <h2>Table #2</h2>
                                 <hr>
-                                <h2>ID: 55656</h2>
-                                <h2>Name: Rodo</h2>
-                                <h2>Email: rod@diaz</h2>
-                                <h2>Phone: 555-6978</h2>
+                                <h2>ID: 55657</h2>
+                                <h2>Name: Ryan Stout</h2>
+                                <h2>Email: rstout@gmail.com</h2>
+                                <h2>Phone: 555-1984</h2>
                             </li>
                             <li class="list-group-item mt-4">
                                 <h2>Table #3</h2>
                                 <hr>
-                                <h2>ID: 55656</h2>
-                                <h2>Name: Rodo</h2>
-                                <h2>Email: rod@diaz</h2>
-                                <h2>Phone: 555-6978</h2>
+                                <h2>ID: 55658</h2>
+                                <h2>Name: James Gideon</h2>
+                                <h2>Email: jamgid@yahoo.com</h2>
+                                <h2>Phone: 555-6518</h2>
                             </li>
                         </ul>
                     </div>
             </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h4>Waiting List</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul id="waitList" class="list-group"></ul>
+                    </div>
+                </div>
         </div>
         <footer class="footer">
             <div class="container">
+                <p>Control Panel</p>
                 <p>
+                    <a href="#" id="clear">Clear Table</a>
+                    | 
                     <a href="/api/tables">API Table Link</a>
-                     | 
+                    |
                     <a href="/api/waitList">API Wait List</a>
                 </p>
             </div>
         </footer>
     </div>
     
+    <script type="text/javascript">
+
+
+        function runTableQuery() {
+            $.ajax({ url: "/api/tables", method: "GET"})
+            .then(function(tableData) {
+                console.log(tableData);
+                console.log("----------------------------");
+
+                for (var i = 0; i < tableData.length; i++) {
+                    var tableList = $("tableList");
+
+                    var listItem = $("<li class='list-group-item mt-4'>");
+
+                    listItem.append(
+                        $("<h2>").text("Table #" + (i + 1)),
+                        $("<hr>"),
+                        $("<h2>").text("ID: " + tableData[i].customerID),
+                        $("<h2>").text("Name: " + tableData[i].customerName),
+                        $("<h2>").text("Email: " + tableData[i].customerEmail),
+                        $("<h2>").text("Phone: " + tableData[i].phoneNumber)
+                    );
+
+                    tableList.append(listItem);
+                }
+            });
+        }
+
+        function runWaitListQuery() {
+            $ajax({ url: "/api/waitlist", method: "GET"})
+            .then(function(waitData) {
+
+                console.log(waitData);
+                console.log("----------------------------------");
+
+                for (var i=0; i < waitData.length; i++) {
+
+                    var waitList = $("#waitList");
+
+                    var listItem = $("<li class='list-group-item mt-4'>");
+                    
+                    listItem.append(
+                        $("<h2>").text("Table #" + (i + 1)),
+                        $("<hr>"),
+                        $("<h2>").text("ID: " + waitData[i].customerID),
+                        $("<h2>").text("Name: " + waitData[i].customerName),
+                        $("<h2>").text("Email: " + waitData[i].customerEmail),
+                        $("<h2>").text("Phone: " + waitData[i].phoneNumber)
+                    );
+                            waitList.append(listItem);
+                    }
+            });
+        }
+
+        function clearTable() {
+            alert("Clearing...");
+
+            $ajax({ url: "/api/clear", method: "POST"}).then(function() {
+                $("#waitList").empty();
+                $("#tableList").empty();
+            });
+        }
+
+        $("#clear").on("click", clearTable);
+
+        runTableQuery();
+        runWaitListQuery();
+    
+    
+    
+    
+    
+    
+    
+    </script>
 
 
 
