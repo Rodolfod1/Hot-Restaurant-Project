@@ -81,9 +81,39 @@
 
 
 
+    
+        
     <script>
-        //put value get js in here
+        $(".submit").on("click", function(event) {
+            event.preventDefault();
+
+            var newReservation = {
+                customerName: $("#reserve-name").val().trim(),
+                phoneNumber: $("#reserve-phone").val().trim(),
+                customerEmail: $("#reserve-email").val().trim(),
+                customerID: $("#reserve-unique-id").val().trim(),
+            };
+
+            console.log(newReservation);
+
+            $.post("/api/tables", newReservation, 
+            function(data) {
+                if(data) {
+                    alert("You booked it, nice!");
+                } else {
+                    alert("Thanks for your interest, you're officially on the wait list");
+                }
+
+                $("#reserve-name").val("");
+                $("#reserve-phone").val("");
+                $("#reserve-email").val("");
+                $("#reserve-unique-id").val("");
+            });
+
+
+        });
     </script>
+
 
     <script src="https://kit.fontawesome.com/##.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
